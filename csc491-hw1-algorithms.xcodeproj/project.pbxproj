@@ -15,6 +15,7 @@
 		7CADBBC11EC0EC020061059C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CADBBBF1EC0EC020061059C /* LaunchScreen.storyboard */; };
 		7CADBBCC1EC0EC020061059C /* csc491_hw1_algorithmsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADBBCB1EC0EC020061059C /* csc491_hw1_algorithmsTests.swift */; };
 		7CADBBD71EC0EC030061059C /* csc491_hw1_algorithmsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADBBD61EC0EC030061059C /* csc491_hw1_algorithmsUITests.swift */; };
+		7CADBBE51EC0EC210061059C /* BarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADBBE41EC0EC210061059C /* BarCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		7CADBBD21EC0EC030061059C /* csc491-hw1-algorithmsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "csc491-hw1-algorithmsUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CADBBD61EC0EC030061059C /* csc491_hw1_algorithmsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = csc491_hw1_algorithmsUITests.swift; sourceTree = "<group>"; };
 		7CADBBD81EC0EC030061059C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7CADBBE41EC0EC210061059C /* BarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +108,7 @@
 				7CADBBBF1EC0EC020061059C /* LaunchScreen.storyboard */,
 				7CADBBC21EC0EC020061059C /* Info.plist */,
 				7CADBBBA1EC0EC020061059C /* csc491_hw1_algorithms.xcdatamodeld */,
+				7CADBBE41EC0EC210061059C /* BarCell.swift */,
 			);
 			path = "csc491-hw1-algorithms";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7CADBBB61EC0EC020061059C /* ViewController.swift in Sources */,
+				7CADBBE51EC0EC210061059C /* BarCell.swift in Sources */,
 				7CADBBBC1EC0EC020061059C /* csc491_hw1_algorithms.xcdatamodeld in Sources */,
 				7CADBBB41EC0EC020061059C /* AppDelegate.swift in Sources */,
 			);
