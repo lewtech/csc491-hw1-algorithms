@@ -20,9 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //window = UIWindow(frame: UIScreen.main)
         //window?.makeKeyAndVisible()
 
-        let vc = ViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        let navController = UINavigationController(rootViewController: vc)
-        window?.rootViewController = navController
+//        let vc = ViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        let navController = UINavigationController(rootViewController: vc)
+//        window?.rootViewController = navController
         return true
     }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7C35DEF41EC202B700624232 /* AlgorithmGraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C35DEF31EC202B700624232 /* AlgorithmGraphViewController.swift */; };
 		7CADBBB41EC0EC020061059C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADBBB31EC0EC020061059C /* AppDelegate.swift */; };
 		7CADBBB61EC0EC020061059C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CADBBB51EC0EC020061059C /* ViewController.swift */; };
 		7CADBBB91EC0EC020061059C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7CADBBB71EC0EC020061059C /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7C35DEF31EC202B700624232 /* AlgorithmGraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlgorithmGraphViewController.swift; sourceTree = "<group>"; };
 		7CADBBB01EC0EC020061059C /* csc491-hw1-algorithms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "csc491-hw1-algorithms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7CADBBB31EC0EC020061059C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7CADBBB51EC0EC020061059C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				7CADBBC21EC0EC020061059C /* Info.plist */,
 				7CADBBBA1EC0EC020061059C /* csc491_hw1_algorithms.xcdatamodeld */,
 				7CADBBE41EC0EC210061059C /* BarCell.swift */,
+				7C35DEF31EC202B700624232 /* AlgorithmGraphViewController.swift */,
 			);
 			path = "csc491-hw1-algorithms";
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7C35DEF41EC202B700624232 /* AlgorithmGraphViewController.swift in Sources */,
 				7CADBBB61EC0EC020061059C /* ViewController.swift in Sources */,
 				7CADBBE51EC0EC210061059C /* BarCell.swift in Sources */,
 				7CADBBBC1EC0EC020061059C /* csc491_hw1_algorithms.xcdatamodeld in Sources */,
@@ -522,6 +526,7 @@
 				7CADBBDD1EC0EC030061059C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CADBBDE1EC0EC030061059C /* Build configuration list for PBXNativeTarget "csc491-hw1-algorithmsTests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +535,7 @@
 				7CADBBE01EC0EC030061059C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		7CADBBE11EC0EC030061059C /* Build configuration list for PBXNativeTarget "csc491-hw1-algorithmsUITests" */ = {
 			isa = XCConfigurationList;
@@ -538,6 +544,7 @@
 				7CADBBE31EC0EC030061059C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
