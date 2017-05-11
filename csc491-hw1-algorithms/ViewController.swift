@@ -10,6 +10,7 @@ import UIKit
 
 class ViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
+    @IBOutlet weak var viewCollectionView: UICollectionView!
     @IBOutlet weak var textFieldArray: UITextView!
     @IBOutlet weak var lblArrayItems: UITextField!
     @IBOutlet weak var sliderNewArray: UISlider!
@@ -21,8 +22,10 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var barView: UICollectionView!
     let cellId = "cell"
 
-    let values: [CGFloat] = [10,10,10,10,100,1,2,3,4,5,6,7,8,9,10,11,30,1000,1000]
+    var values: [Int] = [5,4,3,2,1,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
 
+    @IBAction func btnPressSelection(_ sender: Any) {algSelectionSort(array: values)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +37,62 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
 
 
     }
+
+    func algSelectionSort(array:Array<Any>){
+        DispatchQueue.global(qos: .background).async{
+        var A:[Int] = array as! [Int]
+
+        self.textFieldArray.text = String(describing: A)
+
+
+
+
+
+        var key:Int
+        var i:Int
+        for j:Int in 0...A.count-1{
+
+            sleep(1)
+
+            DispatchQueue.main.async  {
+                //self.lblArrayItems.text = String(describing: A)
+                self.values = A
+                self.updateLabel(A: A)
+                self.viewCollectionView.reloadData()
+                print (A)
+            }
+
+
+
+            key = Int(A[j])
+            print(A)
+            i = j-1
+            while ((i>=0) && (A[i]>key)){
+                A[i+1] = A[i]
+                i = i - 1
+
+
+            }
+            A[i+1] = key
+
+        }
+        
+
+        }
+        
+    }
+
+
+    @IBAction func pressInsertion(_ sender: Any) {
+        values = [1,2,3,4,5]
+    }
+
+    @IBAction func pressMerge(_ sender: Any) {
+
+        viewCollectionView.reloadData()
+    }
+
+    //COLLECTIONVIEW
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 4
@@ -47,6 +106,10 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
         return barView.frame.height - 20 - 44 - 8
     }
 
+    func updateLabel(A:Array<Any>) {
+        textFieldArray.text = String(describing: A)
+    }
+
 
 
 
@@ -57,8 +120,8 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
             let value = values[indexPath.item]
             let ratio = value / max
             cell.widthAnchor.constraint(equalToConstant: 5.0)
-            cell.barHeightConstraint?.constant = maxHeight() * ratio
-        }
+            //cell.barHeightConstraint?.constant = maxHeight() * CGFloat(ratio)
+            cell.barHeightConstraint?.constant = CGFloat(value) + 2        }
 
         return cell
     }
