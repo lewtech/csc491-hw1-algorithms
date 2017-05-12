@@ -53,7 +53,7 @@
                                 <rect key="frame" x="10" y="72" width="355" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fjg-zr-nfO">
-                                        <rect key="frame" x="0.0" y="0.0" width="178" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Insertion"/>
                                         <connections>
@@ -61,18 +61,17 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-U8-MEK">
-                                        <rect key="frame" x="188" y="0.0" width="63" height="30"/>
+                                        <rect key="frame" x="148" y="0.0" width="63" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title=" Reverse "/>
-                                        <connections>
-                                            <action selector="pressMerge:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kRR-fw-Pau"/>
-                                            <action selector="pressReverseSort:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OzV-aX-TIo"/>
-                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9E4-Pz-msp">
-                                        <rect key="frame" x="261" y="0.0" width="44" height="30"/>
+                                        <rect key="frame" x="221" y="0.0" width="84" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title="Merge"/>
+                                        <state key="normal" title=" Randomize "/>
+                                        <connections>
+                                            <action selector="pressRandomize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RkN-OD-ATM"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSu-ax-qSq">
                                         <rect key="frame" x="315" y="0.0" width="40" height="30"/>

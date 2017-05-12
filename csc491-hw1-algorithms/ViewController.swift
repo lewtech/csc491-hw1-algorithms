@@ -117,64 +117,49 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
     }
 
 
-    //MERGESORT
+    //RANDOMIZE ARRAY
 
-    @IBAction func pressMerge(_ sender: Any) {
-
-        //values  = [2,1]
+    @IBAction func pressRandomize(_ sender: Any) {
+        algRandomizeSort(array: values)
     }
 
-    func mergeSort(_ array: [Int]) -> [Int] {
+    func algRandomizeSort(array:Array<Any>){
+        DispatchQueue.global(qos: .background).async{
+            var A:[Int] = array as! [Int]
 
-        guard array.count > 1 else { return array }    // 1
+            self.textFieldArray.text = String(describing: A)
+            let max = array.count
+            var key:Int
+            var i:Int
+            var rand : UInt32
+            for j:Int in 0...A.count-1{
+                rand = arc4random_uniform(UInt32(max))
+                key = Int(A[Int(rand)])
+                print(A)
+                i = j-1
+                while (i>=0){
+                    A[i+1] = A[i]
+                    i = i - 1
 
-        let middleIndex = array.count / 2              // 2
+                }
+                A[i+1] = key
 
-        let leftArray = mergeSort(Array(array[0..<middleIndex]))             // 3
+                sleep(1)
 
-        let rightArray = mergeSort(Array(array[middleIndex..<array.count]))  // 4
-
-        return merge(leftPile: leftArray, rightPile: rightArray)             // 5
-        }
-
-    func merge(leftPile: [Int], rightPile: [Int]) -> [Int] {
-        // 1
-        
-        var leftIndex = 0
-        var rightIndex = 0
-
-        // 2
-        var orderedPile = [Int]()
-
-        // 3
-        while leftIndex < leftPile.count && rightIndex < rightPile.count {
-            if leftPile[leftIndex] < rightPile[rightIndex] {
-                orderedPile.append(leftPile[leftIndex])
-                leftIndex += 1
-            } else if leftPile[leftIndex] > rightPile[rightIndex] {
-                orderedPile.append(rightPile[rightIndex])
-                rightIndex += 1
-            } else {
-                orderedPile.append(leftPile[leftIndex])
-                leftIndex += 1
-                orderedPile.append(rightPile[rightIndex])
-                rightIndex += 1
+                DispatchQueue.main.async  {
+                    //self.lblArrayItems.text = String(describing: A)
+                    self.values = A
+                    self.updateLabel(A: A)
+                    self.viewCollectionView.reloadData()
+                    print (A)
+                }
             }
         }
+    }
 
-        // 4
-        while leftIndex < leftPile.count {
-            orderedPile.append(leftPile[leftIndex])
-            leftIndex += 1
-        }
-        
-        while rightIndex < rightPile.count {
-            orderedPile.append(rightPile[rightIndex])
-            rightIndex += 1
-        }
-        
-        return orderedPile
-        }
+
+
+
 //QUICKSORT
     @IBAction func quickSortPressed(_ sender: Any) {
         quicksort(values)
