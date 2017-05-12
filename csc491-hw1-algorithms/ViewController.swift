@@ -162,32 +162,71 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
 
 //QUICKSORT
     @IBAction func quickSortPressed(_ sender: Any) {
-        quicksort(values)
+        print(mergeSortBottomUp(values, <))
+
     }
 
-    func quicksort<T: Comparable>(_ a: [T]) -> [T] {
+    func mergeSortBottomUp<T>(_ a: [T], _ isOrderedBefore: @escaping (T, T) -> Bool)  {
+DispatchQueue.global(qos: .background).async{
 
-        guard a.count > 1 else { return a }
+        let n = a.count
+        var z = [a, a]   // the two working arrays
+        var d = 0        // z[d] is used for reading, z[1 - d] for writing
+        var width = 1
+        while width < n {
 
-        let pivot = a[a.count/2]
-        let less = a.filter { $0 < pivot }
-        let equal = a.filter { $0 == pivot }
-        let greater = a.filter { $0 > pivot }
-        sleep(1)
+            var i = 0
+            while i < n {
 
-        DispatchQueue.main.async  {
-            //self.lblArrayItems.text = String(describing: A)
-            self.values = a as! [Int]
-            self.updateLabel(A: a)
-            self.viewCollectionView.reloadData()
-            print (self.quicksort(less) + equal + self.quicksort(greater))
-        }
-        return quicksort(less) + equal + quicksort(greater)
+                var j = i
+                var l = i
+                var r = i + width
 
+                let lmax = min(l + width, n)
+                let rmax = min(r + width, n)
 
-        }
+                while l < lmax && r < rmax {
+                    if isOrderedBefore(z[d][l], z[d][r]) {
+                        z[1 - d][j] = z[d][l]
+                        l += 1
+                    } else {
+                        z[1 - d][j] = z[d][r]
+                        r += 1
+                    }
+                    j += 1
+                }
+                sleep(1)
 
+                while l < lmax {
+                    z[1 - d][j] = z[d][l]
+                    j += 1
+                    l += 1
+                }
+                sleep(1)
 
+                while r < rmax {
+                    z[1 - d][j] = z[d][r]
+                    j += 1
+                    r += 1
+                }
+                
+                i += width*2
+            }
+            sleep(1)
+
+            width *= 2   // in each step, the subarray to merge becomes larger
+            d = 1 - d    // swap active array
+            DispatchQueue.main.async  {
+                //self.lblArrayItems.text = String(describing: A)
+                let valuesReduced = Array(z.joined())
+                self.values = z [0] as! [Int]
+                self.updateLabel(A: z)
+                self.viewCollectionView.reloadData()
+                print (z)
+            }
+            }
+        //return z[d]
+        }}
 
     //COLLECTIONVIEW
 
