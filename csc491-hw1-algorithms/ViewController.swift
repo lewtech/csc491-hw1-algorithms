@@ -20,12 +20,17 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var btnInsertion: UIButton!
     @IBOutlet weak var btnMerge: UIButton!
     @IBOutlet weak var barView: UICollectionView!
+    @IBAction func pressNewArray(_ sender: Any) {
+        var values: [Int] = [5,4,3,2,1,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
+    }
     let cellId = "cell"
 
     var values: [Int] = [5,4,3,2,1,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
 
-    @IBAction func btnPressSelection(_ sender: Any) {algSelectionSort(array: values)
+    @IBAction func pressInsertionSort(_ sender: Any) {
+        algInsertionSort(array: values)
     }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,19 +43,25 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
 
     }
 
-    func algSelectionSort(array:Array<Any>){
+    func algInsertionSort(array:Array<Any>){
         DispatchQueue.global(qos: .background).async{
         var A:[Int] = array as! [Int]
 
         self.textFieldArray.text = String(describing: A)
 
-
-
-
-
         var key:Int
         var i:Int
         for j:Int in 0...A.count-1{
+
+            key = Int(A[j])
+            print(A)
+            i = j-1
+            while ((i>=0) && (A[i]>key)){
+                A[i+1] = A[i]
+                i = i - 1
+
+            }
+            A[i+1] = key
 
             sleep(1)
 
@@ -61,36 +72,134 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
                 self.viewCollectionView.reloadData()
                 print (A)
             }
+        }
+        }
+    }
 
 
+    @IBAction func pressReverseSort(_ sender: Any) {algReverseSort(array: values)
+    }
 
-            key = Int(A[j])
-            print(A)
-            i = j-1
-            while ((i>=0) && (A[i]>key)){
-                A[i+1] = A[i]
-                i = i - 1
+    func algReverseSort(array:Array<Any>){
+        DispatchQueue.global(qos: .background).async{
+            var A:[Int] = array as! [Int]
 
+            self.textFieldArray.text = String(describing: A)
 
+            var key:Int
+            var i:Int
+            for j:Int in 0...A.count-1{
+
+                key = Int(A[j])
+                print(A)
+                i = j-1
+                while ((i<=0) && (A[i]<key)){
+                    A[i+1] = A[i]
+                    i = i - 1
+
+                }
+                A[i+1] = key
+
+                sleep(1)
+
+                DispatchQueue.main.async  {
+                    //self.lblArrayItems.text = String(describing: A)
+                    self.values = A
+                    self.updateLabel(A: A)
+                    self.viewCollectionView.reloadData()
+                    print (A)
+                }
             }
-            A[i+1] = key
-
         }
-        
-
-        }
-        
     }
 
 
-    @IBAction func pressInsertion(_ sender: Any) {
-        values = [1,2,3,4,5]
-    }
+    //MERGESORT
 
     @IBAction func pressMerge(_ sender: Any) {
 
-        viewCollectionView.reloadData()
+        mergeSort(values)
     }
+
+    func mergeSort(_ array: [Int]) -> [Int] {
+
+        guard array.count > 1 else { return array }    // 1
+
+        let middleIndex = array.count / 2              // 2
+
+        let leftArray = mergeSort(Array(array[0..<middleIndex]))             // 3
+
+        let rightArray = mergeSort(Array(array[middleIndex..<array.count]))  // 4
+
+        return merge(leftPile: leftArray, rightPile: rightArray)             // 5
+        }
+
+    func merge(leftPile: [Int], rightPile: [Int]) -> [Int] {
+        // 1
+        
+        var leftIndex = 0
+        var rightIndex = 0
+
+        // 2
+        var orderedPile = [Int]()
+
+        // 3
+        while leftIndex < leftPile.count && rightIndex < rightPile.count {
+            if leftPile[leftIndex] < rightPile[rightIndex] {
+                orderedPile.append(leftPile[leftIndex])
+                leftIndex += 1
+            } else if leftPile[leftIndex] > rightPile[rightIndex] {
+                orderedPile.append(rightPile[rightIndex])
+                rightIndex += 1
+            } else {
+                orderedPile.append(leftPile[leftIndex])
+                leftIndex += 1
+                orderedPile.append(rightPile[rightIndex])
+                rightIndex += 1
+            }
+        }
+
+        // 4
+        while leftIndex < leftPile.count {
+            orderedPile.append(leftPile[leftIndex])
+            leftIndex += 1
+        }
+        
+        while rightIndex < rightPile.count {
+            orderedPile.append(rightPile[rightIndex])
+            rightIndex += 1
+        }
+        
+        return orderedPile
+        }
+//QUICKSORT
+    @IBAction func quickSortPressed(_ sender: Any) {
+        quicksort(values)
+    }
+
+    func quicksort<T: Comparable>(_ a: [T]) -> [T] {
+
+        guard a.count > 1 else { return a }
+
+        let pivot = a[a.count/2]
+        let less = a.filter { $0 < pivot }
+        let equal = a.filter { $0 == pivot }
+        let greater = a.filter { $0 > pivot }
+        sleep(1)
+
+        DispatchQueue.main.async  {
+            //self.lblArrayItems.text = String(describing: A)
+            self.values = a as! [Int]
+            self.updateLabel(A: a)
+            self.viewCollectionView.reloadData()
+            print (self.quicksort(less) + equal + self.quicksort(greater))
+        }
+        return quicksort(less) + equal + quicksort(greater)
+
+
+        }
+
+
 
     //COLLECTIONVIEW
 

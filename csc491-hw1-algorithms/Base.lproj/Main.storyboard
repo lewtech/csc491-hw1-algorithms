@@ -53,33 +53,34 @@
                                 <rect key="frame" x="10" y="72" width="355" height="30"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fjg-zr-nfO">
-                                        <rect key="frame" x="0.0" y="0.0" width="149" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="178" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title=" Selection "/>
+                                        <state key="normal" title="Insertion"/>
                                         <connections>
-                                            <action selector="btnPressSelection:" destination="BYZ-38-t0r" eventType="touchUpInside" id="O1H-AL-UQg"/>
+                                            <action selector="pressInsertionSort:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Ssr-8x-d9s"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N2H-U8-MEK">
-                                        <rect key="frame" x="159" y="0.0" width="52" height="30"/>
+                                        <rect key="frame" x="188" y="0.0" width="63" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title=" Merge "/>
+                                        <state key="normal" title=" Reverse "/>
                                         <connections>
                                             <action selector="pressMerge:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kRR-fw-Pau"/>
+                                            <action selector="pressReverseSort:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OzV-aX-TIo"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9E4-Pz-msp">
-                                        <rect key="frame" x="221" y="0.0" width="68" height="30"/>
+                                        <rect key="frame" x="261" y="0.0" width="44" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title=" Insertion "/>
-                                        <connections>
-                                            <action selector="pressInsertion:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gbJ-vj-YVR"/>
-                                        </connections>
+                                        <state key="normal" title="Merge"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nSu-ax-qSq">
-                                        <rect key="frame" x="299" y="0.0" width="56" height="30"/>
+                                        <rect key="frame" x="315" y="0.0" width="40" height="30"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <state key="normal" title=" Bubble "/>
+                                        <state key="normal" title="Quick"/>
+                                        <connections>
+                                            <action selector="quickSortPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UIV-jx-uab"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -87,6 +88,9 @@
                                 <rect key="frame" x="8" y="110" width="72" height="30"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="New Array"/>
+                                <connections>
+                                    <action selector="pressNewArray:" destination="BYZ-38-t0r" eventType="touchUpInside" id="q3t-UZ-Wld"/>
+                                </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="8yt-zf-WLi">
                                 <rect key="frame" x="8" y="211" width="357" height="128"/>
@@ -149,9 +153,7 @@
                             <constraint firstItem="gcA-16-H2W" firstAttribute="top" secondItem="8yt-zf-WLi" secondAttribute="bottom" constant="90" id="wMw-Qp-0dG"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="4Qw-4i-NNG">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="Cpg-7d-xVq"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="4Qw-4i-NNG"/>
                     <connections>
                         <outlet property="barView" destination="gcA-16-H2W" id="4w8-yi-b7Y"/>
                         <outlet property="btnBubble" destination="nSu-ax-qSq" id="7C9-Tn-Kg6"/>
