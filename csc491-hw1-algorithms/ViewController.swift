@@ -21,11 +21,14 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var btnMerge: UIButton!
     @IBOutlet weak var barView: UICollectionView!
     @IBAction func pressNewArray(_ sender: Any) {
-        var values: [Int] = [5,4,3,2,1,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
+
     }
     let cellId = "cell"
 
     var values: [Int] = [5,4,3,2,1,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
+   // var values: [Int] = [5,4]
+
+
 
     @IBAction func pressInsertionSort(_ sender: Any) {
         algInsertionSort(array: values)
@@ -93,10 +96,10 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
                 key = Int(A[j])
                 print(A)
                 i = j-1
-                while ((i<=0) && (A[i]<key)){
+                while ((i>=0) && (A[i]<key)){
                     A[i+1] = A[i]
                     i = i - 1
-
+                    
                 }
                 A[i+1] = key
 
@@ -118,7 +121,7 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
 
     @IBAction func pressMerge(_ sender: Any) {
 
-        mergeSort(values)
+        //values  = [2,1]
     }
 
     func mergeSort(_ array: [Int]) -> [Int] {
