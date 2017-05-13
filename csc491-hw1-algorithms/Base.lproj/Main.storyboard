@@ -138,6 +138,7 @@
                                         </constraints>
                                         <state key="normal" title="Insertion "/>
                                         <connections>
+                                            <action selector="insertion2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8eW-Oq-zln"/>
                                             <action selector="pressInsertionSort:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bjC-cW-yHG"/>
                                         </connections>
                                     </button>
@@ -153,6 +154,7 @@
                                         <state key="normal" title=" Reverse "/>
                                         <connections>
                                             <action selector="pressReverseSort:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BEV-kU-C3g"/>
+                                            <action selector="reverse2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hwp-TS-aka"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VXO-NA-ZUG">
@@ -167,6 +169,7 @@
                                         <state key="normal" title=" Randomize "/>
                                         <connections>
                                             <action selector="pressRandomize:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oAo-xF-Og7"/>
+                                            <action selector="randomize2Press:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hjv-Yp-Rzc"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lCj-wg-apS">
@@ -180,6 +183,7 @@
                                         </constraints>
                                         <state key="normal" title=" Merge "/>
                                         <connections>
+                                            <action selector="merge2Pressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3pX-DV-fqW"/>
                                             <action selector="quickSortPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="4NO-GM-NXv"/>
                                         </connections>
                                     </button>
@@ -297,12 +301,15 @@
                     </view>
                     <navigationItem key="navigationItem" id="4Qw-4i-NNG"/>
                     <connections>
+                        <outlet property="array2label" destination="zrs-CE-GGD" id="ci6-HR-lIv"/>
                         <outlet property="barView" destination="gcA-16-H2W" id="4w8-yi-b7Y"/>
                         <outlet property="btnInsertion" destination="9E4-Pz-msp" id="GXJ-dK-s5w"/>
                         <outlet property="btnMerge" destination="N2H-U8-MEK" id="D5j-ex-Tui"/>
                         <outlet property="lblArrayItems" destination="RUM-ck-0Og" id="lOJ-ZQ-Dxh"/>
+                        <outlet property="segmented" destination="K3A-DU-jhA" id="TzM-Fy-rlk"/>
                         <outlet property="textFieldArray" destination="8yt-zf-WLi" id="hKK-JM-ZiZ"/>
                         <outlet property="viewCollectionView" destination="gcA-16-H2W" id="miV-yR-0U8"/>
+                        <outlet property="viewCollectionView2" destination="Eao-AF-rof" id="dVc-L5-XeM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
