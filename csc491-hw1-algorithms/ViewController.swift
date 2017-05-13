@@ -13,26 +13,13 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var viewCollectionView: UICollectionView!
     @IBOutlet weak var textFieldArray: UITextView!
     @IBOutlet weak var lblArrayItems: UITextField!
-    @IBOutlet weak var sliderNewArray: UISlider!
-    @IBOutlet weak var btnSelection: UIButton!
-    @IBOutlet weak var btnNewArray: UIButton!
-    @IBOutlet weak var btnBubble: UIButton!
     @IBOutlet weak var btnInsertion: UIButton!
     @IBOutlet weak var btnMerge: UIButton!
     @IBOutlet weak var barView: UICollectionView!
-    @IBAction func pressNewArray(_ sender: Any) {
 
-    }
     let cellId = "cell"
 
-    var values: [Int] = [5,4,3,2,1,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
-   // var values: [Int] = [5,4]
-
-
-
-    @IBAction func pressInsertionSort(_ sender: Any) {
-        algInsertionSort(array: values)
-    }
+    var values: [Int] = [5,4,3,2,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
 
 
     override func viewDidLoad() {
@@ -42,9 +29,15 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
         barView?.backgroundColor = .white
 
         barView?.register(BarCell.self, forCellWithReuseIdentifier: cellId)
-
-
     }
+
+
+    //INSERTION SORT
+
+    @IBAction func pressInsertionSort(_ sender: Any) {
+        algInsertionSort(array: values)
+    }
+
 
     func algInsertionSort(array:Array<Any>){
         DispatchQueue.global(qos: .background).async{
@@ -80,6 +73,7 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
     }
 
 
+    //REVERSE INSERTION SORT
     @IBAction func pressReverseSort(_ sender: Any) {algReverseSort(array: values)
     }
 
@@ -128,21 +122,24 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
             var A:[Int] = array as! [Int]
 
             self.textFieldArray.text = String(describing: A)
-            let max = array.count
+            let max = A.count
             var key:Int
             var i:Int
-            var rand : UInt32
+            var rand : Int
+
             for j:Int in 0...A.count-1{
-                rand = arc4random_uniform(UInt32(max))
-                key = Int(A[Int(rand)])
+                rand = Int(arc4random_uniform(UInt32(max-1)))
+                key = Int(A[j])
                 print(A)
                 i = j-1
-                while (i>=0){
-                    A[i+1] = A[i]
+                while (i>=0) {
+                    var swapCache = A[i+1]
+                    A[i+1] = A[rand]
+                    A[rand] = swapCache
                     i = i - 1
 
                 }
-                A[i+1] = key
+
 
                 sleep(1)
 
@@ -162,7 +159,7 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
 
 //QUICKSORT
     @IBAction func quickSortPressed(_ sender: Any) {
-        print(mergeSortBottomUp(values, <))
+        mergeSortBottomUp(values, <)
 
     }
 
@@ -202,7 +199,7 @@ DispatchQueue.global(qos: .background).async{
                     j += 1
                     l += 1
                 }
-                sleep(1)
+
 
                 while r < rmax {
                     z[1 - d][j] = z[d][r]
@@ -211,18 +208,25 @@ DispatchQueue.global(qos: .background).async{
                 }
                 
                 i += width*2
+
+                DispatchQueue.main.async  {
+
+                    self.values = z [1] as! [Int]
+                    self.updateLabel(A: self.values)
+                    self.viewCollectionView.reloadData()
+                    print (self.values)
+                }
             }
             sleep(1)
 
             width *= 2   // in each step, the subarray to merge becomes larger
             d = 1 - d    // swap active array
             DispatchQueue.main.async  {
-                //self.lblArrayItems.text = String(describing: A)
-                let valuesReduced = Array(z.joined())
-                self.values = z [0] as! [Int]
-                self.updateLabel(A: z)
+
+                self.values = z [1] as! [Int]
+                self.updateLabel(A: self.values)
                 self.viewCollectionView.reloadData()
-                print (z)
+                print (self.values)
             }
             }
         //return z[d]
@@ -262,14 +266,7 @@ DispatchQueue.global(qos: .background).async{
         return cell
     }
 
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: 10, height: maxHeight())
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-//        return UIEdgeInsets(top: 0, left: 4, bottom: 0, right: 4)
-//    }
+
 
 
 }
