@@ -37,6 +37,7 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
         super.viewDidLoad()
         lblArrayItems.text = String(values.count)
         textFieldArray.text = String(describing: values)
+        array2label.text = String(describing: values2)
         barView?.backgroundColor = .white
         barView?.register(BarCell.self, forCellWithReuseIdentifier: cellId1)
         barView?.register(BarCell.self, forCellWithReuseIdentifier: cellId)
@@ -271,7 +272,7 @@ DispatchQueue.global(qos: .background).async{
         DispatchQueue.global(qos: .background).async{
             var A:[Int] = array as! [Int]
 
-            self.textFieldArray.text = String(describing: A)
+            self.array2label.text = String(describing: A)
 
             var key:Int
             var i:Int
@@ -290,10 +291,9 @@ DispatchQueue.global(qos: .background).async{
                 sleep(1)
 
                 DispatchQueue.main.async  {
-                    //self.lblArrayItems.text = String(describing: A)
-                    self.values = A
-                    self.updateLabel(A: A)
-                    self.viewCollectionView.reloadData()
+                    self.values2 = A
+                    self.updateLabel2(A: self.values2)
+                    self.viewCollectionView2.reloadData()
                     print (A)
                 }
             }
@@ -305,10 +305,10 @@ DispatchQueue.global(qos: .background).async{
 
 
     func algReverseSort2(array:Array<Any>){
-        DispatchQueue.global(qos: .background).async{
+        DispatchQueue.global(qos: .utility).async{
             var A:[Int] = array as! [Int]
 
-            self.textFieldArray.text = String(describing: A)
+            self.array2label.text = String(describing: A)
 
             var key:Int
             var i:Int
@@ -327,10 +327,9 @@ DispatchQueue.global(qos: .background).async{
                 sleep(1)
 
                 DispatchQueue.main.async  {
-                    //self.lblArrayItems.text = String(describing: A)
-                    self.values = A
-                    self.updateLabel(A: A)
-                    self.viewCollectionView.reloadData()
+                    self.values2 = A
+                    self.updateLabel2(A: self.values2)
+                    self.viewCollectionView2.reloadData()
                     print (A)
                 }
             }
@@ -346,7 +345,7 @@ DispatchQueue.global(qos: .background).async{
         DispatchQueue.global(qos: .background).async{
             var A:[Int] = array as! [Int]
 
-            self.textFieldArray.text = String(describing: A)
+            self.array2label.text = String(describing: A)
             let max = A.count
             var key:Int
             var i:Int
@@ -369,10 +368,9 @@ DispatchQueue.global(qos: .background).async{
                 sleep(1)
 
                 DispatchQueue.main.async  {
-                    //self.lblArrayItems.text = String(describing: A)
-                    self.values = A
-                    self.updateLabel(A: A)
-                    self.viewCollectionView.reloadData()
+                    self.values2 = A
+                    self.updateLabel2(A: self.values2)
+                    self.viewCollectionView2.reloadData()
                     print (A)
                 }
             }
@@ -434,8 +432,8 @@ DispatchQueue.global(qos: .background).async{
                     DispatchQueue.main.async  {
                         
                         self.values = z [1] as! [Int]
-                        self.updateLabel(A: self.values)
-                        self.viewCollectionView.reloadData()
+                        self.updateLabel2(A: self.values2)
+                        self.viewCollectionView2.reloadData()
                         print (self.values)
                     }
                 }
@@ -444,11 +442,10 @@ DispatchQueue.global(qos: .background).async{
                 width *= 2   // in each step, the subarray to merge becomes larger
                 d = 1 - d    // swap active array
                 DispatchQueue.main.async  {
-                    
-                    self.values = z [1] as! [Int]
-                    self.updateLabel(A: self.values)
-                    self.viewCollectionView.reloadData()
-                    print (self.values)
+                    self.values2 = z [1] as! [Int]
+                    self.updateLabel2(A: self.values2)
+                    self.viewCollectionView2.reloadData()
+                    print (self.values2)
                 }
             }
             //return z[d]
@@ -480,6 +477,10 @@ DispatchQueue.global(qos: .background).async{
 
     func updateLabel(A:Array<Any>) {
         textFieldArray.text = String(describing: A)
+    }
+
+    func updateLabel2(A:Array<Any>) {
+        array2label.text = String(describing: A)
     }
 
 
