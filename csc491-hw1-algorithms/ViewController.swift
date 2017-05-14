@@ -28,16 +28,17 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
     let cellId = "cell"
     let cellId1 = "cell1"
 
-    var values: [Int] = [5,4,3,2,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
-    var values2: [Int] = [5,4,3,2,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
-
+ //   var values: [Int] = [5,4,3,2,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
+ //   var values2: [Int] = [5,4,3,2,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
+    var values: [Int] = [1,2,3,4]
+    var values2: [Int] = [4,3,2,1]
 
     override func viewDidLoad() {
         super.viewDidLoad()
         lblArrayItems.text = String(values.count)
         textFieldArray.text = String(describing: values)
         barView?.backgroundColor = .white
-
+        barView?.register(BarCell.self, forCellWithReuseIdentifier: cellId1)
         barView?.register(BarCell.self, forCellWithReuseIdentifier: cellId)
         viewCollectionView2.dataSource = self
         viewCollectionView2.delegate = self
@@ -485,6 +486,10 @@ DispatchQueue.global(qos: .background).async{
 
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+
+        var cell:UICollectionViewCell?
+
+        if collectionView == viewCollectionView {
         let cell = barView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! BarCell
 
         if let max = values.max() {
@@ -494,11 +499,29 @@ DispatchQueue.global(qos: .background).async{
             //cell.barHeightConstraint?.constant = maxHeight() * CGFloat(ratio)
             cell.barHeightConstraint?.constant = CGFloat(value) + 2        }
 
-        return cell
-    }
+            return cell
+        }
+
+        if collectionView == viewCollectionView2 {
+            let cell = barView.dequeueReusableCell(withReuseIdentifier: cellId1, for: indexPath) as! BarCell
+
+            if let max = values2.max() {
+                let value = values2[indexPath.item]
+                let ratio = value / max
+                cell.widthAnchor.constraint(equalToConstant: 5.0)
+                //cell.barHeightConstraint?.constant = maxHeight() * CGFloat(ratio)
+                cell.barHeightConstraint?.constant = CGFloat(value) + 2        }
+
+            return cell
+        }
+
+
+
+        return cell!
 
 
 
 
 }
 
+} //end of class
