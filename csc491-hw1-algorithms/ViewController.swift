@@ -26,6 +26,7 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
 
 
     let cellId = "cell"
+    let cellId1 = "cell1"
 
     var values: [Int] = [5,4,3,2,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
     var values2: [Int] = [5,4,3,2,1,2,2,32,2,24,4,24,2,2,5,23,22,3,12,2]
@@ -38,6 +39,9 @@ class ViewController: UIViewController,UICollectionViewDelegate, UICollectionVie
         barView?.backgroundColor = .white
 
         barView?.register(BarCell.self, forCellWithReuseIdentifier: cellId)
+        viewCollectionView2.dataSource = self
+        viewCollectionView2.delegate = self
+        viewCollectionView2.register(BarCell.self, forCellWithReuseIdentifier: cellId1)
     }
 
 
@@ -457,7 +461,16 @@ DispatchQueue.global(qos: .background).async{
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+
+        var count:Int?
+
+        if collectionView == self.viewCollectionView{
         return values.count
+        }
+        if collectionView == self.viewCollectionView2{
+            return values2.count
+        }
+        return count!
     }
 
     func maxHeight() -> CGFloat {
